@@ -58,6 +58,30 @@ input[type=color]{width:100%;height:44px;border:1px solid #ffffff33;border-radiu
 .flip{display:block;margin:0 auto}
 .foot{color:var(--mut);font-size:14px;margin-top:24px}
 :focus-visible{outline:3px solid var(--c2);outline-offset:2px}
+.elt,.qr,.deco{display:none}
+.e .fr,.e .bk{background:#0b0b0d;color:#f3f1ec}
+.e .in{display:none}
+.e .elt{display:flex;position:absolute;inset:0;z-index:2;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 8%}
+.foil{color:var(--m1)}
+.elt b{font:600 clamp(20px,5.6cqw,38px)/1.15 "Cormorant Garamond",Georgia,serif;letter-spacing:.2em;text-transform:uppercase}
+.elt i{display:block;width:12%;height:1px;background:var(--m1);margin:14px 0}
+.elt span{font-size:clamp(10px,1.9cqw,13px);letter-spacing:.3em;text-transform:uppercase;color:#a9a7a1}
+.e .ctc{right:36%}
+.e .ctc b{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600}
+.e .qr{display:block;position:absolute;z-index:2;right:7.5%;top:50%;transform:translateY(-50%);width:26%;color:#0b0b0d;background:var(--m1);padding:1.6%;border-radius:4px}
+.qr svg{display:block;width:100%;height:auto}
+.d .fr,.d .bk{background:#fff;color:#1c2b4a}
+.d .deco{display:block;position:absolute;inset:0;width:100%;height:100%}
+.d .deco g{display:none}
+.d[data-l="1"] .g1,.d[data-l="2"] .g2,.d[data-l="3"] .g3,.d[data-l="4"] .g4{display:inline}
+.d .mk{background:#1c2b4a}
+.d[data-l="3"] .bk,.d[data-l="4"] .bk{background:#1c2b4a;color:#fff}
+.opt{display:none;gap:8px;flex-wrap:wrap}
+.opt.on{display:flex}
+.opt button{font:800 14px Manrope,Arial;padding:11px 13px;border-radius:8px;border:1px solid #ffffff44;background:none;color:#fff;cursor:pointer}
+.opt button[aria-pressed=true]{background:#fff;color:#14171d}
+.cl.off{display:none}
+.lab{font-size:14px;color:var(--mut);width:100%}
 @media(max-width:820px){.g{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.card{transition:none}}
 </style>
@@ -65,35 +89,44 @@ input[type=color]{width:100%;height:44px;border:1px solid #ffffff33;border-radiu
 <body>
 <div class="w">
 <h1>Ваша визитка уже здесь</h1>
-<p class="lead">Введите свои данные и фирменные цвета справа: визитка обновится сразу. Нажмите на неё, чтобы перевернуть.</p>
+<p class="lead">Четыре варианта на выбор. Введите свои данные справа: визитка обновится сразу. Нажмите на неё, чтобы перевернуть.</p>
 <div class="g">
 <div>
 <div class="stage"><button class="card b" id="c" type="button" aria-label="Перевернуть визитку">
-<div class="f fr"><div class="in"><div class="mk" id="mk"></div><div><div class="n" id="nm"></div><div class="r" id="rl"></div></div></div></div>
-<div class="f bk"><div class="ctc"><b id="co"></b><div id="ph"></div><div id="ml"></div><div id="st"></div></div></div>
+<div class="f fr"><svg class="deco" viewBox="0 0 900 500" preserveAspectRatio="none" aria-hidden="true"><g class="g1"><rect x="0" y="0" width="14" height="500" fill="#2f9e8f"/></g><g class="g2"><rect x="0" y="462" width="900" height="38" fill="#1c2b4a"/><rect x="0" y="452" width="900" height="10" fill="#e9b44c"/><circle cx="830" cy="74" r="34" fill="none" stroke="#2f9e8f" stroke-width="6"/></g><g class="g3"><polygon points="900,0 900,500 560,500 740,0" fill="#1c2b4a"/><polygon points="740,0 790,0 610,500 560,500" fill="#2f9e8f"/><polygon points="900,330 900,500 780,500" fill="#e9b44c"/></g><g class="g4"><polygon points="900,0 900,500 500,500 690,0" fill="#1c2b4a"/><polygon points="690,0 744,0 554,500 500,500" fill="#2f9e8f"/><polygon points="760,0 776,0 586,500 570,500" fill="#e9b44c"/><path d="M640 500C700 360 800 330 900 340V500Z" fill="#2f9e8f" opacity=".9"/><path d="M730 500C780 420 840 400 900 410V500Z" fill="#e9b44c"/><g fill="#ffffff" opacity=".55"><circle cx="790" cy="60" r="5"/><circle cx="825" cy="60" r="5"/><circle cx="860" cy="60" r="5"/><circle cx="790" cy="95" r="5"/><circle cx="825" cy="95" r="5"/><circle cx="860" cy="95" r="5"/><circle cx="790" cy="130" r="5"/><circle cx="825" cy="130" r="5"/><circle cx="860" cy="130" r="5"/></g></g></svg><div class="elt"><b class="foil" id="eCo"></b><i></i><span id="eNm"></span></div><div class="in"><div class="mk" id="mk"></div><div><div class="n" id="nm"></div><div class="r" id="rl"></div></div></div></div>
+<div class="f bk"><div class="ctc"><b id="co"></b><div id="ph"></div><div id="ml"></div><div id="st"></div></div><div class="qr" id="qr"></div></div>
 </button></div>
 <button class="flip" id="fp" type="button">Перевернуть</button>
 </div>
 <div class="pn">
-<div class="st" id="ss" role="group" aria-label="Стиль"><button type="button" data-s="b" aria-pressed="true">Вариант 1: Премиум</button><button type="button" data-s="a" aria-pressed="false">Вариант 2: Динамика</button></div>
+<div class="st" id="ss" role="group" aria-label="Стиль"><button type="button" data-s="b" aria-pressed="true">Вариант 1: Премиум</button><button type="button" data-s="a" aria-pressed="false">Вариант 2: Динамика</button><button type="button" data-s="e" aria-pressed="false">Вариант 3: Элита</button><button type="button" data-s="d" aria-pressed="false">Вариант 4: Дизайн</button></div>
+<div class="opt" id="oE" role="group" aria-label="Металл"><span class="lab">Тиснение</span><button type="button" data-m="g" aria-pressed="true">Золото</button><button type="button" data-m="p" aria-pressed="false">Платина</button></div>
+<div class="opt" id="oD" role="group" aria-label="Насыщенность дизайна"><span class="lab">Насыщенность дизайна</span><button type="button" data-l="1" aria-pressed="false">Минимум</button><button type="button" data-l="2" aria-pressed="true">Акцент</button><button type="button" data-l="3" aria-pressed="false">Геометрия</button><button type="button" data-l="4" aria-pressed="false">Насыщенный</button></div>
 <label>Компания<input type="text" id="iCo" value="Ваша компания"></label>
 <label>Имя<input type="text" id="iNm" value="Имя Фамилия"></label>
 <label>Должность<input type="text" id="iRl" value="Руководитель"></label>
 <label>Телефон<input type="text" id="iPh" value="+7 900 000-00-00"></label>
 <label>Почта или сайт<input type="text" id="iMl" value="hello@example.com"></label>
-<div class="cl"><label>Основной цвет<input type="color" id="c1" value="#0f6b5c"></label><label>Акцент<input type="color" id="c2" value="#f2b134"></label></div>
+<div class="cl" id="cl"><label>Основной цвет<input type="color" id="c1" value="#0f6b5c"></label><label>Акцент<input type="color" id="c2" value="#f2b134"></label></div>
 </div>
 </div>
 <p class="foot">Демо: данные условные. Формат 90 × 50 мм. Вместо круга с буквой будет Ваш логотип.</p>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
 var $=function(i){return document.getElementById(i)},c=$('c');
-function up(){$('nm').textContent=$('iNm').value;$('rl').textContent=$('iRl').value;$('co').textContent=$('iCo').value;$('ph').textContent=$('iPh').value;$('ml').textContent=$('iMl').value;$('mk').textContent=($('iCo').value.trim()[0]||'').toUpperCase()}
+c.dataset.l='2';
+function metal(k){var r=document.documentElement.style;r.setProperty('--m1',k==='p'?'#c9ccd2':'#c9a45c');r.setProperty('--m2',k==='p'?'#f4f5f7':'#f3dfa8')}metal('g');
+function drawQr(){if(!window.qrcode)return;var v=$('iPh').value.replace(/[^+\d]/g,''),s='BEGIN:VCARD\nVERSION:3.0\nFN:'+$('iNm').value+'\nORG:'+$('iCo').value+'\nTEL:'+v+'\nEMAIL:'+$('iMl').value+'\nEND:VCARD',q=qrcode(0,'M');q.addData(unescape(encodeURIComponent(s)),'Byte');q.make();var n=q.getModuleCount(),h='';for(var y=0;y<n;y++)for(var x=0;x<n;x++)if(q.isDark(y,x))h+='M'+x+' '+y+'h1v1h-1z';$('qr').innerHTML='<svg viewBox="-1 -1 '+(n+2)+' '+(n+2)+'" aria-hidden="true" shape-rendering="crispEdges"><path d="'+h+'" fill="currentColor"/></svg>'}
+function pick(g,b){document.querySelectorAll(g+' button').forEach(function(x){x.setAttribute('aria-pressed',x===b)})}
+document.querySelectorAll('#oE button').forEach(function(b){b.onclick=function(){metal(b.dataset.m);pick('#oE',b)}});
+document.querySelectorAll('#oD button').forEach(function(b){b.onclick=function(){c.dataset.l=b.dataset.l;pick('#oD',b)}});
+function up(){$('nm').textContent=$('iNm').value;$('rl').textContent=$('iRl').value;$('co').textContent=$('iCo').value;$('ph').textContent=$('iPh').value;$('ml').textContent=$('iMl').value;$('mk').textContent=($('iCo').value.trim()[0]||'').toUpperCase();$('eCo').textContent=$('iCo').value;$('eNm').textContent=$('iNm').value;drawQr()}
 ['iCo','iNm','iRl','iPh','iMl'].forEach(function(i){$(i).oninput=up});up();
 $('c1').oninput=function(e){document.documentElement.style.setProperty('--c',e.target.value)};
 $('c2').oninput=function(e){document.documentElement.style.setProperty('--c2',e.target.value)};
 function flip(){c.classList.toggle('fl')}c.onclick=flip;$('fp').onclick=flip;
-document.querySelectorAll('#ss button').forEach(function(b){b.onclick=function(){c.classList.remove('a','b','c');c.classList.add(b.dataset.s);document.querySelectorAll('#ss button').forEach(function(x){x.setAttribute('aria-pressed',x===b)})}});
+document.querySelectorAll('#ss button').forEach(function(b){b.onclick=function(){var s=b.dataset.s;c.classList.remove('a','b','c','e','d');c.classList.add(s);$('oE').classList.toggle('on',s==='e');$('oD').classList.toggle('on',s==='d');$('cl').classList.toggle('off',s==='e'||s==='d');pick('#ss',b)}});
 </script>
 </body>
 </html>
